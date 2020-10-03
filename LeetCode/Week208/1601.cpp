@@ -1,3 +1,9 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+
+
 class Solution {
 public:
     int in[25], out[25];
