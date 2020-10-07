@@ -8,7 +8,7 @@ struct node {
     int x, y;
     node(int x, int y):x(x), y(y){}
     bool operator< (const node &a ) const {
-        return x < a.x; 
+        return a.x < x; 
     }
 
 };
@@ -18,6 +18,7 @@ priority_queue<int> q_default;//默认是大顶堆序
 priority_queue<int,vector<int>,less<int> >q;//大顶堆
 priority_queue<int,vector<int>,greater<int> > q2;//小顶堆
 priority_queue<node> q3;//重载运算符的优先队列， x小在前
+
 void fun() {
     priority_queue<int> q;
     q.top();//取队列首元素，也就是堆顶元素
