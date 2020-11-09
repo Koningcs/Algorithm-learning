@@ -1,14 +1,22 @@
 
+/*
+
+https://leetcode-cn.com/problems/furthest-building-you-can-reach/
+
+我的思路是 二分答案, 然后贪心check, 复杂度是log(n)*n*log(n)
+
+官解n*log(n)
+核心问题是前K大的gap 要用梯子, 剩下的用砖块. 
+问题就成了 如何找到前K大
+*/
+
 class Solution {
 public:
 
-
-    priority_queue<int> q1;
     priority_queue<int, vector<int>, greater<int> > q2; //小
    
 
     int furthestBuilding(vector<int>& heights, int bricks, int ladders) {
-        while( !q1.empty() ) q1.pop();
         while( !q2.empty() ) q2.pop();
         int n = heights.size();
         int sum = 0;
