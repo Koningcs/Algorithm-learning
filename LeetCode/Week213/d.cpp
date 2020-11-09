@@ -1,9 +1,12 @@
 class Solution {
 public:
-    int c[20][20];
+    int c[40][40];
     void init(int n, int m) {
-        for(int i = 1; i <= n; i ++ ) {
-            for(int j = 1; j <= m; j ++) {
+        int x = n + m;
+        c[0][0] = 1;
+        for(int i = 1; i <= x; i ++) {
+            c[i][0] = 1;
+            for(int j = 1; j <= x; j ++) {
                 c[i][j] = c[i - 1][j] + c[i-1][j-1];
             }
         }
@@ -14,10 +17,20 @@ public:
         int i = 0, j = 0;
         // H的数量m, V的数量n
         string s = "";
+        //cout << c[5][2] << endl;
         while(i < n && j < m) {
-            if(k < c[m-j-1][n+m-i-j-1]) s += 'H';
-            else s += 'V';
+            if(k <= c[n+m-i-j-1][m-j-1]){
+                s += 'H';
+                j++;
+            }
+            else { 
+                s += 'V';
+                k -= c[n+m-i-j-1][m-j-1];
+                i++;
+            }
         }
+        for(; i < n; i ++) s+='V';
+        for(; j < m; j ++) s+='H';
         return s;
     }
 };
